@@ -1,0 +1,550 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Khám Phá Tết Nguyên Đán Việt Nam</title>
+    <style>
+        /* Tiêu chí 4: Màu sắc hài hòa (Đỏ - Vàng chủ đạo của ngày Tết) */
+        :root {
+            --mau-do-tet: #c8102E;
+            --mau-vang-tet: #FFD700;
+            --mau-nen: #fffaf0;
+            --mau-chu: #333;
+            --mau-gradient-vang: linear-gradient(45deg, #FFD700, #FFA500);
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            scroll-behavior: smooth;
+        }
+
+        body {
+            /* Nâng cấp: Nền tỏa sáng ấm áp thay vì màu trơn */
+            background: radial-gradient(circle at 50% 0%, #fff3e0 0%, var(--mau-nen) 100%);
+            color: var(--mau-chu);
+            line-height: 1.6;
+            overflow-x: hidden; /* Tránh thanh cuộn ngang khi hoa rơi */
+        }
+
+        /* --- Thanh điều hướng (Header & Nav) --- */
+        header {
+            background: linear-gradient(90deg, #a00b23, var(--mau-do-tet), #a00b23);
+            position: fixed;
+            top: 0;
+            width: 100%;
+            z-index: 1000;
+            box-shadow: 0 4px 15px rgba(200, 16, 46, 0.4);
+            border-bottom: 2px solid var(--mau-vang-tet);
+        }
+
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 10px 50px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        /* Nâng cấp: Làm nổi bật Logo */
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            color: var(--mau-vang-tet);
+            font-size: 26px;
+            font-weight: 900;
+            text-transform: uppercase;
+            text-decoration: none;
+            text-shadow: 0 0 10px rgba(255, 215, 0, 0.8); /* Phát sáng chữ */
+        }
+
+        .logo-img {
+            height: 50px;
+            width: auto;
+            border-radius: 50%;
+            box-shadow: 0 0 10px var(--mau-vang-tet);
+        }
+
+        nav ul {
+            list-style: none;
+            display: flex;
+            gap: 20px;
+        }
+
+        nav ul li a {
+            color: white;
+            text-decoration: none;
+            font-size: 16px;
+            font-weight: bold;
+            text-transform: uppercase;
+            transition: all 0.3s;
+            padding: 5px 10px;
+            border-radius: 5px;
+        }
+
+        nav ul li a:hover {
+            color: var(--mau-do-tet);
+            background-color: var(--mau-vang-tet);
+            box-shadow: 0 0 15px var(--mau-vang-tet);
+        }
+
+        /* --- Bố cục chính --- */
+        main {
+            padding-top: 100px;
+            max-width: 1000px;
+            margin: 0 auto;
+            background-color: rgba(255, 255, 255, 0.8); /* Nền trắng mờ làm nổi bật nội dung */
+            box-shadow: 0 0 20px rgba(0,0,0,0.05);
+            border-radius: 15px;
+            padding-bottom: 30px;
+        }
+
+        section {
+            padding: 60px 30px;
+            border-bottom: 2px dashed #f0c98a;
+        }
+
+        /* =========================================
+           NÂNG CẤP: LÀM NỔI BẬT TIÊU ĐỀ (Chữ 3D, Gradient)
+           ========================================= */
+        h1 {
+            font-size: 38px;
+            color: var(--mau-do-tet);
+            text-align: center;
+            margin-bottom: 20px;
+            text-transform: uppercase;
+            font-weight: 900;
+            /* Hiệu ứng viền trắng + bóng đổ vàng + bóng đỏ tạo cảm giác 3D rực rỡ */
+            text-shadow: 2px 2px 0 #fff, 
+                         4px 4px 0 var(--mau-vang-tet), 
+                         6px 6px 15px rgba(200, 16, 46, 0.5);
+            letter-spacing: 2px;
+        }
+
+        h2 {
+            font-size: 32px;
+            color: var(--mau-do-tet);
+            text-align: center;
+            margin-bottom: 40px;
+            text-transform: uppercase;
+            font-weight: 800;
+            position: relative;
+            display: inline-block;
+            left: 50%;
+            transform: translateX(-50%);
+            text-shadow: 1px 1px 0 #fff, 3px 3px 0 #f0c98a; /* Nổi khối nhẹ */
+        }
+        
+        h2::before, h2::after {
+            content: '🌸'; /* Thêm icon hoa hai bên tiêu đề */
+            font-size: 24px;
+            margin: 0 15px;
+            filter: drop-shadow(0 0 5px pink);
+        }
+
+        /* --- Nội dung --- */
+        .intro-content {
+            text-align: center;
+            font-size: 18px;
+            font-weight: 500;
+        }
+
+        .intro-img {
+            width: 100%;
+            height: 400px;
+            object-fit: cover;
+            border-radius: 15px;
+            margin-top: 25px;
+            border: 5px solid var(--mau-vang-tet);
+            box-shadow: 0 10px 20px rgba(200, 16, 46, 0.3);
+        }
+
+        /* Phong tục (Dạng lưới/Card) */
+        .phong-tuc-grid {
+            display: flex;
+            gap: 25px;
+            justify-content: space-between;
+        }
+
+        .card {
+            background: white;
+            padding: 15px;
+            border-radius: 15px;
+            box-shadow: 0 8px 15px rgba(0,0,0,0.1);
+            width: 33%;
+            text-align: center;
+            border: 2px solid #fff;
+            position: relative;
+            z-index: 10;
+        }
+
+        .card img {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+            border-radius: 10px;
+            margin-bottom: 15px;
+            border: 2px solid #f0c98a;
+        }
+
+        .card h3 {
+            color: #a00b23;
+            margin-bottom: 10px;
+            font-size: 22px;
+            font-weight: bold;
+        }
+
+        /* =========================================
+           THÊM MỚI: CSS CHO PHẦN LỊCH TRÌNH (TIMELINE)
+           ========================================= */
+        .timeline-container {
+            position: relative;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .timeline-container::after {
+            content: '';
+            position: absolute;
+            width: 4px;
+            background: var(--mau-gradient-vang);
+            top: 0;
+            bottom: 0;
+            left: 50%;
+            margin-left: -2px;
+            border-radius: 5px;
+        }
+
+        .timeline-item {
+            padding: 10px 40px;
+            position: relative;
+            background-color: inherit;
+            width: 50%;
+        }
+
+        /* Vòng tròn ở giữa */
+        .timeline-item::after {
+            content: '';
+            position: absolute;
+            width: 20px;
+            height: 20px;
+            right: -10px;
+            background-color: white;
+            border: 4px solid var(--mau-do-tet);
+            top: 15px;
+            border-radius: 50%;
+            z-index: 1;
+            box-shadow: 0 0 10px var(--mau-vang-tet);
+        }
+
+        .timeline-item:nth-child(even) {
+            left: 50%;
+        }
+
+        .timeline-item:nth-child(odd) {
+            left: 0;
+        }
+
+        .timeline-item:nth-child(even)::after {
+            left: -10px;
+        }
+
+        .timeline-date {
+            background: var(--mau-do-tet);
+            color: var(--mau-vang-tet);
+            padding: 5px 15px;
+            border-radius: 20px;
+            font-weight: bold;
+            display: inline-block;
+            margin-bottom: 10px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+        }
+
+        .timeline-item h3 {
+            color: var(--mau-do-tet);
+            margin-bottom: 10px;
+        }
+
+        .timeline-item p {
+            background: white;
+            padding: 15px;
+            border-radius: 10px;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+            border-left: 4px solid var(--mau-vang-tet);
+        }
+
+        /* --- Biểu mẫu liên hệ --- */
+        .contact-form {
+            background: linear-gradient(135deg, #ffffff, #fffaf0);
+            padding: 40px;
+            border-radius: 15px;
+            box-shadow: 0 10px 25px rgba(200, 16, 46, 0.15);
+            max-width: 600px;
+            margin: 0 auto;
+            border: 2px solid var(--mau-vang-tet);
+            position: relative;
+        }
+
+        .form-group label {
+            font-size: 18px;
+        }
+
+        .form-group input, .form-group textarea {
+            border: 2px solid #ddd;
+            background-color: #fafafa;
+        }
+
+        button.btn-submit {
+            background: var(--mau-gradient-vang);
+            color: var(--mau-do-tet);
+            text-shadow: 1px 1px 0px rgba(255,255,255,0.5);
+        }
+
+        /* --- Chân trang --- */
+        footer {
+            background: url('https://www.transparenttextures.com/patterns/stardust.png'), linear-gradient(0deg, #600000, var(--mau-do-tet));
+            color: white;
+            text-align: center;
+            padding: 40px 20px;
+            margin-top: 40px;
+            border-top: 5px solid var(--mau-vang-tet);
+        }
+
+        /* =========================================
+           NÂNG CẤP: HIỆU ỨNG HOA RƠI (CSS KẾT HỢP JS)
+           ========================================= */
+        .petal {
+            position: fixed;
+            top: -10px;
+            z-index: 9999;
+            pointer-events: none; /* Không cản trở click chuột */
+            animation: fall linear infinite;
+        }
+        
+        /* Hình dạng cánh hoa đào/mai */
+        .petal::after {
+            content: '';
+            position: absolute;
+            width: 15px;
+            height: 15px;
+            background: #ffb6c1; /* Màu mặc định là hoa đào */
+            border-radius: 50% 0 50% 0;
+            transform: rotate(45deg);
+            box-shadow: 0 0 5px rgba(255, 182, 193, 0.8);
+        }
+
+        /* Dành cho cánh hoa Mai vàng */
+        .petal.yellow::after {
+            background: #FFD700;
+            box-shadow: 0 0 5px rgba(255, 215, 0, 0.8);
+        }
+
+        @keyframes fall {
+            0% {
+                transform: translateY(-10vh) rotate(0deg) translateX(0);
+                opacity: 1;
+            }
+            100% {
+                transform: translateY(110vh) rotate(360deg) translateX(50px);
+                opacity: 0;
+            }
+        }
+
+        /* --- Hoạt ảnh khác --- */
+        .card { transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275); }
+        .card:hover {
+            transform: translateY(-15px) scale(1.05);
+            box-shadow: 0 20px 30px rgba(200, 16, 46, 0.2);
+            border-color: var(--mau-vang-tet);
+        }
+        .card:hover h3 { color: var(--mau-do-tet); text-shadow: 1px 1px 0px var(--mau-vang-tet); }
+
+        button.btn-submit:hover {
+            background: linear-gradient(45deg, #a00b23, var(--mau-do-tet));
+            color: var(--mau-vang-tet);
+            transform: scale(1.05);
+            box-shadow: 0 5px 20px rgba(255, 215, 0, 0.6);
+            border: 1px solid var(--mau-vang-tet);
+        }
+
+        /* --- Code cho Điện thoại --- */
+        @media screen and (max-width: 768px) {
+            nav { flex-direction: column; padding: 15px; }
+            nav ul { flex-wrap: wrap; justify-content: center; gap: 10px; margin-top: 15px;}
+            main { padding-top: 140px; }
+            h1 { font-size: 28px; }
+            h2 { font-size: 24px; }
+            .phong-tuc-grid { flex-direction: column; }
+            .card { width: 100%; margin-bottom: 20px; }
+            
+            /* Sửa lại timeline cho điện thoại */
+            .timeline-container::after { left: 20px; }
+            .timeline-item { width: 100%; padding-left: 50px; padding-right: 10px; }
+            .timeline-item:nth-child(even), .timeline-item:nth-child(odd) { left: 0; }
+            .timeline-item::after, .timeline-item:nth-child(even)::after { left: 10px; }
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <nav>
+            <a href="#" class="logo">
+                <img src="logo.png" alt="Logo" class="logo-img">
+                <span>Hương Vị Tết</span>
+            </a>
+            <ul>
+                <li><a href="#gioi-thieu">Trang Chủ</a></li>
+                <li><a href="#phong-tuc">Phong Tục</a></li>
+                <li><a href="#am-thuc">Ẩm Thực</a></li>
+                <li><a href="#trinh-tu">Lịch Trình</a></li>
+                <li><a href="#am-nhac">Nhạc Xuân</a></li>
+                <li><a href="#lien-he">Gửi Lời Chúc</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <section id="gioi-thieu">
+            <h1>Chào Mừng Tết Nguyên Đán</h1>
+            <div class="intro-content">
+                <p>Tết Nguyên Đán là lễ hội truyền thống lớn nhất trong năm của người Việt. Đây là dịp để gia đình đoàn tụ, tạ ơn tổ tiên và cùng nhau đón chào một năm mới an khang, thịnh vượng với sắc đỏ của câu đối và sắc vàng của hoa Mai.</p>
+                <img class="intro-img" src="tet.jpg" alt="Không khí ngày Tết">
+            </div>
+        </section>
+
+        <section id="phong-tuc">
+            <h2>Các Phong Tục Đặc Trưng</h2>
+            <div class="phong-tuc-grid">
+                <div class="card">
+                    <img src="banh-chung.jpg" alt="Bánh Chưng xanh">
+                    <h3>Gói Bánh Chưng</h3>
+                    <p>Món ăn truyền thống không thể thiếu trên mâm cỗ cúng tổ tiên, tượng trưng cho Đất trời hòa hợp.</p>
+                </div>
+                <div class="card">
+                    <img src="li-xi.jpg" alt="Phong bao Lì Xì">
+                    <h3>Mừng Tuổi (Lì Xì)</h3>
+                    <p>Trao nhau những phong bao đỏ rực rỡ mang ý nghĩa lấy may, cầu chúc sức khỏe và bình an.</p>
+                </div>
+                <div class="card">
+                    <img src="hoa-dao.jpg" alt="Hoa Đào ngày Tết">
+                    <h3>Chơi Hoa Tết</h3>
+                    <p>Hoa Đào ở miền Bắc và Hoa Mai ở miền Nam tung cánh báo hiệu một mùa xuân ấm áp đang về.</p>
+                </div>
+            </div>
+        </section>
+
+        <section id="am-thuc">
+            <h2>Hương Vị Ẩm Thực Tết</h2>
+            <div class="phong-tuc-grid">
+                <div class="card">
+                    <img src="mam-ngu-qua.jpg" alt="Mâm Ngũ Quả">
+                    <h3>Mâm Ngũ Quả</h3>
+                    <p>Thể hiện ước nguyện của gia chủ về một năm mới sung túc, bình an qua từng loại quả.</p>
+                </div>
+                <div class="card">
+                    <img src="thit-kho.jpg" alt="Thịt kho hột vịt">
+                    <h3>Thịt Kho / Giò Lụa</h3>
+                    <p>Những món ăn đậm đà hương vị gia đình, luôn có mặt trong bữa cơm đoàn tụ ngày xuân.</p>
+                </div>
+                <div class="card">
+                    <img src="cu-kieu.jpg" alt="Dưa hành củ kiệu">
+                    <h3>Dưa Hành, Củ Kiệu</h3>
+                    <p>Vị chua chua, giòn giòn giúp chống ngán hiệu quả, là "linh hồn" ăn kèm không thể thiếu.</p>
+                </div>
+            </div>
+        </section>
+
+        <section id="trinh-tu">
+            <h2>Lịch Trình Đón Tết</h2>
+            <div class="timeline-container">
+                <div class="timeline-item">
+                    <div class="timeline-date">23 Tháng Chạp</div>
+                    <h3>Tiễn Ông Công Ông Táo</h3>
+                    <p>Gia đình dọn dẹp bếp núc, làm mâm cơm cúng và thả cá chép để tiễn Táo Quân về trời.</p>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-date">30 Tết (Giao Thừa)</div>
+                    <h3>Đón Khúc Giao Mùa</h3>
+                    <p>Cả nhà quây quần bên bữa cơm Tất niên. Đúng 12h đêm làm lễ cúng Giao thừa đón năm mới.</p>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-date">Mùng 1 - Mùng 3 Tết</div>
+                    <h3>Xuất Hành & Chúc Tết</h3>
+                    <p>Mùng 1 tết Cha, Mùng 2 tết Mẹ, Mùng 3 tết Thầy. Mọi người mặc đồ đẹp, đi chùa và chúc Tết.</p>
+                </div>
+            </div>
+        </section>
+
+        <section id="am-nhac" style="text-align: center;">
+            <h2>Giai Điệu Mùa Xuân</h2>
+            <p style="margin-bottom: 20px; font-weight: bold;">Cùng lắng nghe giai điệu rộn ràng của mùa xuân.</p>
+            <iframe width="100%" height="450" style="max-width: 800px; border-radius: 15px; border: 5px solid var(--mau-vang-tet);" src="https://www.youtube.com/embed/n8l_j0UKT3Y?si=D1kR9lhnhQg791eo" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+        </section>
+
+        <section id="lien-he">
+            <h2>Gửi Lời Chúc Năm Mới</h2>
+            <div class="contact-form">
+                <form action="mailto:emailcuaban@gmail.com" method="post" enctype="text/plain">
+                    <div class="form-group">
+                        <label for="hoten">Họ và Tên của bạn:</label><br><br>
+                        <input type="text" id="hoten" name="Họ Tên" placeholder="Nhập tên của bạn" required style="width:100%; padding: 12px; border-radius: 8px;">
+                    </div><br>
+                    <div class="form-group">
+                        <label for="loichuc">Lời chúc năm mới:</label><br><br>
+                        <textarea id="loichuc" name="Lời chúc" rows="5" placeholder="Viết những lời chúc tốt đẹp nhất..." required style="width:100%; padding: 12px; border-radius: 8px;"></textarea>
+                    </div><br>
+                    <button type="submit" class="btn-submit" style="width: 100%; padding: 15px; border: none; border-radius: 8px; font-size: 18px; font-weight: bold; cursor: pointer; text-transform: uppercase;">Gửi Lời Chúc</button>
+                </form>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <p style="font-size: 20px; margin-bottom: 10px; color: var(--mau-vang-tet); font-weight: bold;">Chúc Mừng Năm Mới - Vạn Sự Như Ý!</p>
+        <p>Sản phẩm học tập môn Tin học - Chủ đề Tết Nguyên Đán</p>
+        <p>Học sinh thực hiện: Nguyễn Văn Đồng</p>
+    </footer>
+
+    <!-- SCRIPT TẠO HIỆU ỨNG HOA RƠI (ĐÀO & MAI) -->
+    <script>
+        function createPetals() {
+            const numPetals = 40; // Số lượng cánh hoa
+            const body = document.querySelector('body');
+
+            for (let i = 0; i < numPetals; i++) {
+                let petal = document.createElement('div');
+                petal.classList.add('petal');
+                
+                // Random 50% ra hoa mai (vàng), 50% hoa đào (hồng)
+                if (Math.random() > 0.5) {
+                    petal.classList.add('yellow');
+                }
+
+                // Random vị trí xuất hiện theo chiều ngang
+                petal.style.left = Math.random() * 100 + 'vw';
+                
+                // Random thời gian rơi (từ 5s đến 15s)
+                petal.style.animationDuration = Math.random() * 10 + 5 + 's';
+                
+                // Random độ trễ (delay) để hoa không rơi cùng một lúc
+                petal.style.animationDelay = Math.random() * 5 + 's';
+                
+                // Random kích thước cánh hoa to nhỏ khác nhau
+                let size = Math.random() * 0.8 + 0.4;
+                petal.style.transform = `scale(${size})`;
+
+                body.appendChild(petal);
+            }
+        }
+        // Gọi hàm tạo hoa khi trang web vừa tải xong
+        window.onload = createPetals;
+    </script>
+
+</body>
+</html>
